@@ -16,7 +16,7 @@ public class Joueur extends personne {
     private int main;
     private String sponsor;
     private int classement;
-    
+    private statistique stats = new statistique();
 
 
     public Joueur(String nom, String prenom, char genre, String lieuNaissance, String nationalite, int main) {
@@ -32,7 +32,7 @@ public class Joueur extends personne {
     public void setSponsor(String sponsor) { this.sponsor = sponsor; }
     public int getClassement() { return classement; }
     public void setClassement(int classement) { this.classement = classement; }
-    
+    public statistique getStats() { return stats; }
 
 
     public void encourager() { System.out.println(this + " s'encourage !"); }
