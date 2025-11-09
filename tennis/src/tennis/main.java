@@ -5,7 +5,7 @@
 package tennis;
 
 /**
- *
+ *test
  * @author Int3g
  */
 public class main {
