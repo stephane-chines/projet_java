@@ -1,25 +1,129 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package tennis.personnages;
 
-/**
- *
- * @author Int3g
- */
-public class spectateur extends personne {
-    private String tribune;
-    private int place;
+import java.time.LocalDate;
 
+// La classe Spectateur représente une personne qui assiste à un match.
+// Elle hérite de Personne, car un spectateur est avant tout une personne.
+public class Spectateur extends Personne implements ActionsSpectateur
+{
+    // Attributs spécifiques à un spectateur.
+    private double prixBillet;
+    private String nomTribune;
+    private int numeroPlace;
+    
+    // Attributs qui dépendent du genre du spectateur.
+    private String couleurChemise; // Uniquement pour les hommes
+    private boolean porteLunettes; // Uniquement pour les femmes
 
-    public spectateur(String nom, String prenom, char genre, String tribune, int place) {
-        super(nom, prenom, genre);
-        this.tribune = tribune;
-        this.place = place;
+    // Constructeur pour créer un nouveau spectateur.
+    public Spectateur(String nomNaissance, String prenom, Genre genre, LocalDate dateNaissance, String lieuNaissance,
+                        double prixBillet, String nomTribune, int numeroPlace) 
+    {
+        super(nomNaissance, prenom, genre, dateNaissance, lieuNaissance);
+        this.prixBillet = prixBillet;
+        this.nomTribune = nomTribune;
+        this.numeroPlace = numeroPlace;
+        
+        // On initialise les attributs spécifiques au genre à des valeurs par défaut.
+        if (genre == Genre.HOMME) 
+        {
+            this.couleurChemise = "inconnue";
+            this.porteLunettes = false;
+        } 
+        else 
+        {
+            this.couleurChemise = null; // Une femme n'a pas de couleur de chemise distinctive
+            this.porteLunettes = true; // Par défaut, on suppose qu'elle est reconnue par ses lunettes
+        }
     }
 
+    // --- Méthodes pour les actions d'un spectateur ---
+    
+    // Le spectateur applaudit.
+    @Override
+    public void applaudir() 
+    {
+        System.out.println(getPrenom() + " applaudit dans la tribune " + nomTribune + " !");
+    }
 
-    public void applaudir(){ System.out.println(toString() + " applaudit"); }
-    public void crier(){ System.out.println(toString() + " crie"); }
+    // Le spectateur crie.
+    @Override
+    public void crier() 
+    {
+        System.out.println(getPrenom() + " crie 'Allez !'");
+    }
+
+    // Le spectateur hue une décision ou une action.
+    @Override
+    public void huer() 
+    {
+        System.out.println(getPrenom() + " n'est pas content et se fait entendre.");
+    }
+
+    // Le spectateur s'endort (c'est rare).
+    public void dormir() 
+    {
+        System.out.println(getPrenom() + " s'est assoupi... Le match doit être long.");
+    }
+    
+    // --- Méthodes pour les caractéristiques distinctives ---
+
+    // Pour changer la couleur de la chemise d'un spectateur homme.
+    public void changerCouleurChemise(String nouvelleCouleur) 
+    {
+        if (getGenre() == Genre.HOMME) 
+        {
+            this.couleurChemise = nouvelleCouleur;
+            System.out.println(getPrenom() + " met en évidence sa nouvelle chemise de couleur " + nouvelleCouleur + ".");
+        } 
+        else 
+        {
+            System.out.println("Seuls les spectateurs hommes peuvent changer de chemise.");
+        }
+    }
+
+    // Pour indiquer si la spectatrice met ou enlève ses lunettes.
+    public void mettreOuEnleverLunettes(boolean porte) 
+    {
+        if (getGenre() == Genre.FEMME) 
+        {
+            this.porteLunettes = porte;
+            if (porte) 
+            {
+                System.out.println(getPrenom() + " met ses lunettes.");
+            } 
+            else 
+            {
+                System.out.println(getPrenom() + " enlève ses lunettes.");
+            }
+        } 
+        else 
+        {
+            System.out.println("Cette caractéristique est pour les spectatrices.");
+        }
+    }
+    
+    // --- Getters et Setters pour les attributs du spectateur ---
+    
+    public double getPrixBillet() 
+    {
+        return prixBillet;
+    }
+
+    public void setPrixBillet(double prixBillet) 
+    {
+        this.prixBillet = prixBillet;
+    }
+
+    public String getPlace() 
+    {
+        return nomTribune + "-" + numeroPlace;
+    }
+
+    // Pour afficher les infos du spectateur.
+    @Override
+    public String toString() 
+    {
+        return "Spectateur: " + getPrenom() + " " + getNomCourant() + " (Place: " + getPlace() + ")";
+    }
 }
