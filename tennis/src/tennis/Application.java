@@ -11,34 +11,24 @@ import tennis.jeu.Match;
 import tennis.jeu.ModeJeu;
 import tennis.personnages.Joueur;
 import tennis.personnages.Personne;
-import tennis.personnages.Personne;
 import tennis.tournoi.Tournoi;
 import tennis.tournoi.TournoiType;
 
-/**
- * Classe principale de l'application console.
- * Elle gère les menus et orchestre le déroulement global.
- */
+// Point d'entrée console : on fait simple, style projet étudiant.
 public class Application 
 {
     private final Scanner scanner = new Scanner(System.in);
     private final List<Joueur> joueursCrees = new ArrayList<>();
     private Tournoi tournoiEnCours = null;
 
-    /**
-     * Point d'entrée du programme.
-     *
-     * @param args arguments de la ligne de commande (non utilisés)
-     */
+    // main pour lancer tout ça.
     public static void main(String[] args) 
     {
         Application app = new Application();
         app.lancer();
     }
 
-    /**
-     * Boucle principale de l'interface console.
-     */
+    // Menu principal en boucle jusqu'à ce que l'utilisateur quitte.
     public void lancer() 
     {
         System.out.println("Bienvenue dans le gestionnaire de tournoi de tennis !");
@@ -101,9 +91,7 @@ public class Application
         return choix;
     }
 
-    /**
-     * Crée un joueur personnalisé que l'utilisateur peut ensuite inscrire à un tournoi.
-     */
+    // Création d'un joueur maison.
     private void creerPersonnage() 
     {
         System.out.println("\n--- Création d'un joueur ---");
@@ -119,9 +107,7 @@ public class Application
         System.out.println("Joueur " + joueur + " créé avec succès.");
     }
 
-    /**
-     * Crée un nouveau tournoi et inscrit automatiquement les participants manquants.
-     */
+    // Création d'un tournoi et préparation du tableau.
     private void creerTournoi() 
     {
         System.out.println("\n--- Création d'un tournoi ---");
@@ -145,9 +131,7 @@ public class Application
                 + tournoiEnCours.getSurface() + ") est prêt. Utilisez le menu \"Gérer le tournoi\" pour lancer les matchs.");
     }
 
-    /**
-     * Menu de gestion du tournoi en cours (affichages, lancement de matchs, tours).
-     */
+    // Sous-menu pour piloter le tournoi déjà créé.
     private void gererTournoi() throws SaisieInvalideException 
     {
         while (true) 
@@ -172,11 +156,7 @@ public class Application
         }
     }
 
-    /**
-     * Permet de sélectionner et de jouer un match du tableau en cours.
-     *
-     * @throws SaisieInvalideException si l'utilisateur saisit un numéro invalide
-     */
+    // Choisir un match et le jouer (manuel ou auto).
     private void jouerUnMatchDuTournoi() throws SaisieInvalideException 
     {
         List<Match> matchsAVenir = tournoiEnCours.getMatchsAVenir();
@@ -216,11 +196,7 @@ public class Application
         }
     }
 
-    /**
-     * Demande à l'utilisateur de choisir le tournoi du Grand Chelem à simuler.
-     *
-     * @return le type de tournoi choisi
-     */
+    // Petit menu pour choisir le type de tournoi.
     private TournoiType demanderTypeTournoi()
     {
         System.out.println("Choisissez le type de tournoi :");
@@ -251,11 +227,7 @@ public class Application
         }
     }
 
-    /**
-     * Demande le genre du joueur à créer.
-     *
-     * @return le genre sélectionné
-     */
+    // Retourne le genre suivant la saisie (H/F).
     private Personne.Genre demanderGenreJoueur()
     {
         while (true)
@@ -274,9 +246,7 @@ public class Application
         }
     }
 
-    /**
-     * Affiche la liste des joueurs créés ainsi que leurs statistiques de carrière.
-     */
+    // Petit listing des joueurs déjà créés.
     private void afficherInfosJoueurs() 
     {
         if (joueursCrees.isEmpty()) 

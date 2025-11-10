@@ -3,9 +3,7 @@ package tennis.jeu;
 import tennis.personnages.Arbitre;
 import tennis.personnages.Joueur;
 
-/**
- * Représente un set complet de tennis, incluant la gestion d'un éventuel jeu décisif.
- */
+// Un set entier, avec tie-break si le tournoi le permet.
 public class Set 
 {
     private Joueur joueur1;
@@ -33,9 +31,7 @@ public class Set
         this.statsJoueur2 = statsJoueur2;
     }
 
-    /**
-     * Lance le set jusqu'à ce qu'un joueur remplisse les conditions de victoire.
-     */
+    // On joue le set jusqu'à ce qu'il y ait un gagnant.
     public void jouerSet(ModeJeu mode, boolean afficherDetails) 
     {
         while (vainqueur == null) 
@@ -108,9 +104,7 @@ public class Set
         serveurActuel = (serveurActuel == joueur1) ? joueur2 : joueur1;
     }
 
-    /**
-     * @return le vainqueur du set une fois terminé
-     */
+    // Renvoie le vainqueur du set.
     public Joueur getVainqueur() 
     {
         return vainqueur;

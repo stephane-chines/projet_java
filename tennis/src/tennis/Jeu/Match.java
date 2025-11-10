@@ -11,10 +11,7 @@ import tennis.personnages.Joueur;
 import tennis.personnages.Spectateur;
 import tennis.stats.StatistiquesMatch;
 
-/**
- * Représente une rencontre entre deux joueurs.
- * Un match est composé de plusieurs sets que l'on joue en mode manuel ou automatique.
- */
+// Un match, version simple : deux joueurs, quelques sets, ça suffit.
 public class Match 
 {
     private final Joueur joueur1;
@@ -50,12 +47,7 @@ public class Match
         statistiquesParJoueur.put(joueur2, new StatistiquesMatch());
     }
 
-    /**
-     * Lance le match complet jusqu'à ce qu'un joueur atteigne le nombre de sets requis.
-     *
-     * @param mode             manuel ou automatique
-     * @param afficherDetails  indique si l'on souhaite des commentaires détaillés
-     */
+    // Joue un match entier en mode manuel ou auto.
     public void jouerMatch(ModeJeu mode, boolean afficherDetails) 
     {
         // Réinitialisation des compteurs au cas où le match serait relancé.
@@ -144,9 +136,7 @@ public class Match
         return perdant;
     }
 
-    /**
-     * @return catégorie de match (simple hommes / femmes)
-     */
+    // Retourne la catégorie (simple H/F).
     public CategorieMatch getCategorie()
     {
         return categorie;
@@ -157,9 +147,7 @@ public class Match
         return vainqueur;
     }
     
-    /**
-     * @return représentation textuelle du score final si le match est terminé
-     */
+    // Score final lisible ou message si ça n'a pas encore été joué.
     public String getScoreFinal()
     {
         if(vainqueur == null)
@@ -174,18 +162,13 @@ public class Match
         return spectateurs;
     }
 
-    /**
-     * @param joueur joueur concerné
-     * @return statistiques du match pour le joueur
-     */
+    // Statistiques du match pour un joueur.
     public StatistiquesMatch getStatistiques(Joueur joueur)
     {
         return statistiquesParJoueur.get(joueur);
     }
 
-    /**
-     * @return carte immuable des statistiques de match par joueur
-     */
+    // Map des stats pour tout le monde (copie non modifiable).
     public Map<Joueur, StatistiquesMatch> getStatistiquesParJoueur()
     {
         return Collections.unmodifiableMap(statistiquesParJoueur);

@@ -3,9 +3,7 @@ package tennis.personnages;
 import java.time.LocalDate;
 import tennis.stats.StatistiquesCarriere;
 
-/**
- * Représente un joueur de tennis avec ses caractéristiques et ses actions possibles.
- */
+// Représentation d'un joueur avec ses infos et ses actions basiques.
 public class Joueur extends Personne implements ActionsSpectateur
 {
 
@@ -151,61 +149,44 @@ public class Joueur extends Personne implements ActionsSpectateur
     }
 
     // Actions en cours de match pour rendre la simulation plus vivante.
-    /**
-     * Simulation d'un service.
-     */
+    // Fais semblant de lancer un service.
     public void servir() 
     {
         System.out.println(getPrenom() + " se prépare à servir...");
     }
 
-    /**
-     * Simulation d'un retour de service.
-     */
+    // Fais semblant de se préparer au retour.
     public void retournerService() 
     {
         System.out.println(getPrenom() + " se met en position pour retourner le service.");
     }
     
-    /**
-     * Simulation d'un renvoi de balle dans l'échange.
-     */
+    // Même chose pour le renvoi de balle.
     public void renvoyerBalle() 
     {
         System.out.println(getPrenom() + " frappe un coup droit puissant !");
     }
 
-    /**
-     * Simulation d'une faute directe.
-     */
+    // Petite faute directe pour la forme.
     public void faireFauteDirecte() 
     {
         System.out.println("Faute directe de " + getPrenom() + " ! La balle est dans le filet.");
     }
 
-    /**
-     * Fait appel à l'arbitre pour un litige.
-     *
-     * @param arbitre arbitre sollicité
-     * @param motif   motif du litige
-     */
+    // Appelle l'arbitre quand ça râle.
     public void appelerArbitre(Arbitre arbitre, String motif) 
     {
         System.out.println(getPrenom() + " n'est pas d'accord et interpelle l'arbitre: '" + motif + "' !");
         arbitre.resoudreLitige(this, motif);
     }
     
-    /**
-     * Encouragement personnel du joueur.
-     */
+    // Petit boost perso.
     public void sEncourager() 
     {
         System.out.println(getPrenom() + " se motive: 'Allez ! Come on !'");
     }
 
-    /**
-     * Pause hydratation.
-     */
+    // Pense à boire un coup.
     public void boire() 
     {
         System.out.println(getPrenom() + " profite de la pause pour s'hydrater.");

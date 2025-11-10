@@ -15,9 +15,7 @@ import tennis.personnages.Personne;
 import tennis.personnages.Spectateur;
 import tennis.stats.StatistiquesMatch;
 
-/**
- * Représente un tournoi de tennis et conserve l'état des tours successifs.
- */
+// Grosse classe pour gérer le tournoi (tableaux hommes/femmes, tours, stats).
 public class Tournoi 
 {
     private final String nom;
@@ -41,11 +39,7 @@ public class Tournoi
     private Joueur championHommes;
     private Joueur championFemmes;
 
-    /**
-     * @param nom   nom officiel du tournoi
-     * @param annee année d'édition
-     * @param type  type du tournoi (surface, ville, règles tie-break)
-     */
+    // Simple constructeur avec nom/année/type (surface + règle tie-break).
     public Tournoi(String nom, int annee, TournoiType type) 
     {
         this.nom = nom;
@@ -58,25 +52,16 @@ public class Tournoi
         return nom + " " + annee;
     }
 
-    /**
-     * @return type de tournoi associé (ville, surface, règles)
-     */
     public TournoiType getType()
     {
         return type;
     }
 
-    /**
-     * @return ville dans laquelle se déroule le tournoi
-     */
     public String getVille()
     {
         return type.getVille();
     }
 
-    /**
-     * @return surface officielle du tournoi
-     */
     public String getSurface()
     {
         return type.getSurface();
@@ -97,11 +82,6 @@ public class Tournoi
         return Collections.unmodifiableList(matchsJoues);
     }
 
-    /**
-     * Inscrit un joueur au tableau principal (limité à 128 participants).
-     *
-     * @param joueur joueur à enregistrer
-     */
     public void inscrireParticipant(Joueur joueur)
     {
         List<Joueur> participants = (joueur.getGenre() == Personne.Genre.HOMME) ? participantsHommes : participantsFemmes;
@@ -122,10 +102,6 @@ public class Tournoi
         joueur.getStatsCarriere().ajouterParticipationTournoi();
     }
 
-    /**
-     * Crée automatiquement le nombre de joueurs et d'arbitres manquants
-     * et réinitialise l'état du tournoi.
-     */
     public void creerParticipantsAutomatiquement() 
     {
         joueursEnLiceHommes.clear();

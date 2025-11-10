@@ -5,9 +5,7 @@ import tennis.personnages.Arbitre;
 import tennis.personnages.Joueur;
 import tennis.stats.StatistiquesMatch;
 
-/**
- * Représente un jeu de tennis (succession de points) jouable en mode manuel ou automatique.
- */
+// Jeu de tennis simulé (succession de points) en mode manuel ou auto.
 public class Jeu 
 {
     private final Joueur joueur1;
@@ -36,12 +34,7 @@ public class Jeu
         this.vainqueur = null;
     }
 
-    /**
-     * Joue l'intégralité d'un jeu en fonction du mode choisi.
-     *
-     * @param mode mode manuel ou automatique
-     * @param afficherDetails indique si le détail des points doit être annoncé
-     */
+    // Joue un jeu complet selon le mode choisi.
     public void jouerJeu(ModeJeu mode, boolean afficherDetails) 
     {
         while (vainqueur == null) 

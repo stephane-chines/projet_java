@@ -1,9 +1,6 @@
 package tennis.tournoi;
 
-/**
- * Enumération des tournois du Grand Chelem avec leur surface
- * et la règle relative au tie-break dans le set décisif.
- */
+// Simple enum pour connaître la surface et le tie-break final selon le tournoi.
 public enum TournoiType 
 {
     AUSTRALIE("Melbourne", "Plexicushion", true),

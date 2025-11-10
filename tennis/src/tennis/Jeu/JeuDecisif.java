@@ -5,9 +5,7 @@ import tennis.personnages.Arbitre;
 import tennis.personnages.Joueur;
 import tennis.stats.StatistiquesMatch;
 
-/**
- * Gère un jeu décisif (tie-break) avec la rotation de service adaptée.
- */
+// Tie-break tout simple, avec un peu de stats.
 public class JeuDecisif 
 {
     private final Joueur joueur1;
@@ -33,9 +31,7 @@ public class JeuDecisif
         this.statsJoueur2 = statsJoueur2;
     }
 
-    /**
-     * Joue le jeu décisif jusqu'à l'annonce d'un vainqueur.
-     */
+    // Joue le tie-break jusqu'à trouver un gagnant.
     public void jouer(ModeJeu mode, boolean afficherDetails) 
     {
         if (mode == ModeJeu.MANUEL || afficherDetails)
@@ -188,9 +184,7 @@ public class JeuDecisif
         return 150 + generateur.nextDouble() * 30;
     }
 
-    /**
-     * @return le vainqueur du jeu décisif
-     */
+    // Retourne celui qui a gagné ce jeu.
     public Joueur getVainqueur() 
     {
         return vainqueur;

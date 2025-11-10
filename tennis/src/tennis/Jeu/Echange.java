@@ -7,9 +7,7 @@ import tennis.personnages.Joueur;
 // Classe représentant le déroulement d'un point unique.
 public class Echange 
 {
-    /**
-     * Informations récoltées suite à un échange (utiles pour les statistiques).
-     */
+    // Petit paquet de données pour suivre ce qui s'est passé pendant l'échange.
     public static class Resultat
     {
         public final Joueur vainqueur;
