@@ -60,6 +60,12 @@ public class Spectateur extends Personne implements ActionsSpectateur
         System.out.println(getPrenom() + " n'est pas content et se fait entendre.");
     }
 
+    @Override
+    public void dormir() 
+    {
+        System.out.println(getPrenom() + " pique un petit somme malgré l'ambiance.");
+    }
+
     // Le spectateur s'endort (c'est rare).
     public void dormir() 
     {
